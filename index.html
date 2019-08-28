@@ -31,7 +31,7 @@
 
                 atualiza: function(){
                     this.x -= velocidade-9;
-                    if(this.x <= -600)
+                    if(this.x <= -5000)
                         this.x = 0
                 },
 
@@ -48,7 +48,7 @@
 
                 atualiza: function(){
                     this.x -= velocidade;
-                    if(this.x <= -600)
+                    if(this.x <= -5000)
                         this.x = 0
                 },
 
@@ -68,6 +68,7 @@
                 forcaDoPulo: 25,
                 quantPulos: 0,
                 score: 0,
+                seletor_imagem: 0,
 
                 atualiza: function(){
                     this.velocidade += this.gravidade;
@@ -78,6 +79,23 @@
                         this.quantPulos = 0;
                         this.velocidade = 0;
                     }
+
+                    if(this.seletor_imagem == 0){
+                        spriteBoneco = spriteBoneco1;
+                        this.seletor_imagem = 1;
+                    } else if(this.seletor_imagem == 1){
+                        spriteBoneco = spriteBoneco2;
+                        this.seletor_imagem = 2;
+                    } else if(this.seletor_imagem == 2){
+                        spriteBoneco = spriteBoneco1;
+                        this.seletor_imagem = 3;
+                    } else if(this.seletor_imagem == 3){
+                        spriteBoneco = spriteBoneco3;
+                        this.seletor_imagem = 0;
+                    }
+
+                    
+
                 },
                 pula: function(){
                     if(this.quantPulos < maxPulos){
