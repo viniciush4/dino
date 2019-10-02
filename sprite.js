@@ -15,4 +15,5 @@ spriteBoneco = new Sprite(600, 0, 75, 81),
 spriteBoneco1 = new Sprite(600, 0, 75, 81),
 spriteBoneco2 = new Sprite(675, 0, 75, 81),
 spriteBoneco3 = new Sprite(750, 0, 75, 81),
+spriteObstaculo1 = new Sprite(600, 454, 75, 190),
 spriteChao = new Sprite(0, 950, 5000, 50);
