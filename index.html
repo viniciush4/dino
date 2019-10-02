@@ -3,6 +3,10 @@
         <title>Dino</title>
         <script src="sprite.js"></script>
         <style>
+            @font-face {
+                font-family: 'arcadeclassic';
+                src: url('arcadeclassic/ARCADECLASSIC.TTF');
+            }
             canvas {
                 position: absolute;
                 top: 0px;
@@ -150,8 +154,6 @@
                         
                         obs.x -= velocidade;
 
-                        console.log(i, obs.x)
-
                         if(bloco.x < obs.x+obs.largura && 
                         bloco.x+bloco.largura >= obs.x && 
                         bloco.y+bloco.altura >= chao.y-obs.altura)
@@ -244,40 +246,34 @@
 
                 bg.desenha();
 
-                ctx.fillStyle = '#fff';
-                ctx.font = '50px Arial';
-                ctx.fillText(bloco.score, 30, 68);
+                ctx.fillStyle = '#000';
+                // ctx.font = '15px Arial';
+                ctx.font = '15px arcadeclassic';
+                ctx.fillText("Score: "+bloco.score, 10, 20);
+                ctx.fillText("Record: "+localStorage.getItem('record'), 10, 35);
 
                 if(estadoAtual == estados.jogar){
-                    ctx.fillStyle = 'green';
-                    ctx.fillRect(LARGURA/2-50, ALTURA/2-50, 100, 100);
-
-                } else if(estadoAtual == estados.perdeu) {
-                    ctx.fillStyle = 'red';
-                    ctx.fillRect(LARGURA/2-50, ALTURA/2-50, 100, 100);
+                    // ctx.fillStyle = 'green';
+                    // ctx.fillRect(LARGURA/2-50, ALTURA/2-50, 100, 100);
                     ctx.save();
                     ctx.translate(LARGURA/2, ALTURA/2);
-                    ctx.fillStyle = '#fff';
+                    ctx.fillStyle = '#000';
+                    ctx.font = '30px arcadeclassic';
+                    ctx.fillText('S t a r t', -47, 0)
+                    ctx.font = '15px arcadeclassic';
+                    ctx.fillText('Press Any Key', -47, 10);
+                    ctx.restore();
 
-
-                    if(bloco.score > record)
-                        ctx.fillText('Novo Record!', -150, -65);
-                    else if (record < 10)
-                        ctx.fillText('Record '+record, -99, -65);
-                    else if(record >= 10 && record < 100)
-                        ctx.fillText('Record '+record, -112, -65);
-                    else
-                        ctx.fillText('Record '+record, -125, -65)
-
-
-                    if(bloco.score < 10)
-                        ctx.fillText(bloco.score, -13, 18);
-                    else if(bloco.score >= 10 && bloco.score < 100)
-                        ctx.fillText(bloco.score, -27, 18);
-                    else
-                        ctx.fillText(bloco.score, -40, 18);
-
-
+                } else if(estadoAtual == estados.perdeu) {
+                    // ctx.fillStyle = 'red';
+                    // ctx.fillRect(LARGURA/2-50, ALTURA/2-50, 100, 100);
+                    ctx.save();
+                    ctx.translate(LARGURA/2, ALTURA/2);
+                    ctx.fillStyle = '#000';
+                    ctx.font = '30px arcadeclassic';
+                    ctx.fillText('G a m e  O v e r', -83, 0)
+                    ctx.font = '15px arcadeclassic';
+                    ctx.fillText('Press Any Key', -47, 10);
                     ctx.restore();
 
                 } else if(estadoAtual == estados.jogando){
