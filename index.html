@@ -73,6 +73,8 @@
                 quantPulos: 0,
                 score: 0,
                 seletor_imagem: 0,
+                tempo_troca_imagem: 3,
+                contador_troca_imagem: 0,
 
                 atualiza: function(){
                     this.velocidade += this.gravidade;
@@ -84,18 +86,36 @@
                         this.velocidade = 0;
                     }
 
+                    console.log(this.contador_troca_imagem)
+
                     if(this.seletor_imagem == 0){
                         spriteBoneco = spriteBoneco1;
-                        this.seletor_imagem = 1;
+                        this.contador_troca_imagem++;
+                        if(this.contador_troca_imagem == this.tempo_troca_imagem){
+                            this.seletor_imagem = 1;
+                            this.contador_troca_imagem = 0;
+                        }
                     } else if(this.seletor_imagem == 1){
                         spriteBoneco = spriteBoneco2;
-                        this.seletor_imagem = 2;
+                        this.contador_troca_imagem++;
+                        if(this.contador_troca_imagem == this.tempo_troca_imagem){
+                            this.seletor_imagem = 2;
+                            this.contador_troca_imagem = 0;
+                        }
                     } else if(this.seletor_imagem == 2){
                         spriteBoneco = spriteBoneco1;
-                        this.seletor_imagem = 3;
+                        this.contador_troca_imagem++;
+                        if(this.contador_troca_imagem == this.tempo_troca_imagem){
+                            this.seletor_imagem = 3;
+                            this.contador_troca_imagem = 0;
+                        }
                     } else if(this.seletor_imagem == 3){
                         spriteBoneco = spriteBoneco3;
-                        this.seletor_imagem = 0;
+                        this.contador_troca_imagem++;
+                        if(this.contador_troca_imagem == this.tempo_troca_imagem){
+                            this.seletor_imagem = 0;
+                            this.contador_troca_imagem = 0;
+                        }
                     }
 
                     
